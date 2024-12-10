@@ -93,7 +93,7 @@ header {
 
 .arrow-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 140px;
   height: 75px;
   background-color: black;
@@ -103,7 +103,7 @@ header {
 
 .arrow-container button {
   background: none;
-  padding: 0 30px;
+  padding: 0 25px;
   border: none;
   font-size: 24px;
   cursor: pointer;
