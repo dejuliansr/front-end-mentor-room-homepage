@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const slide = slides[index];
   
-    const inClass = direction === 'next' ? 'slide-in' : 'slide-in';
-    const outClass = direction === 'next' ? 'slide-out' : 'slide-out';
+    const inClass = direction === 'next' ? 'slide-right-in' : 'slide-left-in'; // masuk dari kanan saat next, kiri saat prev
+    const outClass = direction === 'next' ? 'slide-left-out' : 'slide-right-out'; // keluar ke kiri saat next, kanan saat prev
   
-    imageContainer.classList.remove('slide-in', 'slide-out');
-    heading.classList.remove('slide-in', 'slide-out');
-    description.classList.remove('slide-in', 'slide-out');
+    imageContainer.classList.remove('slide-left-in', 'slide-left-out', 'slide-right-in', 'slide-right-out');
+    heading.classList.remove('slide-left-in', 'slide-left-out', 'slide-right-in', 'slide-right-out');
+    description.classList.remove('slide-left-in', 'slide-left-out', 'slide-right-in', 'slide-right-out');
   
     imageContainer.classList.add(outClass);
     heading.classList.add(outClass);

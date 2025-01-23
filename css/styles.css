@@ -153,24 +153,38 @@ header {
 .text-container p {
   width: 100%;
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(50px); /* Default start position (from right) */
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Animasi slide masuk */
-.image-container picture img.slide-in,
-.text-container h2.slide-in,
-.text-container p.slide-in {
-  opacity: 1;
-  transform: translateX(0);
+/* Animasi keluar ke kiri dan masuk dari kanan */
+.image-container picture img.slide-left-out,
+.text-container h2.slide-left-out,
+.text-container p.slide-left-out {
+  opacity: 0;
+  transform: translateX(-50px); /* Slide keluar ke kiri */
 }
 
-/* Animasi slide keluar */
-.image-container picture img.slide-out,
-.text-container h2.slide-out,
-.text-container p.slide-out {
+.image-container picture img.slide-right-in,
+.text-container h2.slide-right-in,
+.text-container p.slide-right-in {
+  opacity: 1;
+  transform: translateX(0); /* Slide masuk dari kanan */
+}
+
+/* Animasi keluar ke kanan dan masuk dari kiri */
+.image-container picture img.slide-right-out,
+.text-container h2.slide-right-out,
+.text-container p.slide-right-out {
   opacity: 0;
-  transform: translateX(-100%);
+  transform: translateX(50px); /* Slide keluar ke kanan */
+}
+
+.image-container picture img.slide-left-in,
+.text-container h2.slide-left-in,
+.text-container p.slide-left-in {
+  opacity: 1;
+  transform: translateX(0); /* Slide masuk dari kiri */
 }
 
 .about {
