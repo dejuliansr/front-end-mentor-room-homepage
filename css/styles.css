@@ -82,7 +82,6 @@ header {
   width: 50%;
   height: 550px;
   flex: 2;
-  background-color: beige;
 }
 
 .image-container img {
@@ -142,6 +141,37 @@ header {
   color: hsl(0, 0%, 63%);
 }
 
+/* Style dasar */
+.image-container,
+.text-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container picture img,
+.text-container h2,
+.text-container p {
+  width: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Animasi slide masuk */
+.image-container picture img.slide-in,
+.text-container h2.slide-in,
+.text-container p.slide-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Animasi slide keluar */
+.image-container picture img.slide-out,
+.text-container h2.slide-out,
+.text-container p.slide-out {
+  opacity: 0;
+  transform: translateX(-100%);
+}
 
 .about {
   display: flex;
@@ -236,7 +266,6 @@ header {
     width: 100%;
     height: auto;
     flex: 2;
-    background-color: beige;
   }
   
   .image-container img {
