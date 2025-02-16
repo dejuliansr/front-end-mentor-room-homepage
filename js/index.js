@@ -41,32 +41,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fungsi untuk meng-update konten berdasarkan slide saat ini
   function updateSlide(index, direction = 'next') {
     if (slides.length === 0) return; // Pastikan data slide sudah dimuat
-    
+  
     const slide = slides[index];
   
-    const inClass = direction === 'next' ? 'slide-right-in' : 'slide-left-in'; // masuk dari kanan saat next, kiri saat prev
-    const outClass = direction === 'next' ? 'slide-left-out' : 'slide-right-out'; // keluar ke kiri saat next, kanan saat prev
+    const textInClass = direction === 'next' ? 'slide-right-in' : 'slide-left-in';
+    const textOutClass = direction === 'next' ? 'slide-left-out' : 'slide-right-out';
   
-    imageContainer.classList.remove('slide-left-in', 'slide-left-out', 'slide-right-in', 'slide-right-out');
+    const imgOutClass = 'blur-out';
+    const imgInClass = 'blur-in';
+  
+    // Hapus class animasi sebelumnya
+    imageContainer.classList.remove('blur-in', 'blur-out');
     heading.classList.remove('slide-left-in', 'slide-left-out', 'slide-right-in', 'slide-right-out');
     description.classList.remove('slide-left-in', 'slide-left-out', 'slide-right-in', 'slide-right-out');
   
-    imageContainer.classList.add(outClass);
-    heading.classList.add(outClass);
-    description.classList.add(outClass);
+    // Tambahkan animasi keluar
+    imageContainer.classList.add(imgOutClass);
+    heading.classList.add(textOutClass);
+    description.classList.add(textOutClass);
   
     setTimeout(() => {
       imageContainer.src = window.innerWidth <= 1156 ? slide.imageMobile : slide.imageDesktop;
       heading.textContent = slide.heading;
       description.textContent = slide.description;
   
-      imageContainer.classList.remove(outClass);
-      heading.classList.remove(outClass);
-      description.classList.remove(outClass);
+      // Hapus animasi keluar dan tambahkan animasi masuk
+      imageContainer.classList.remove(imgOutClass);
+      heading.classList.remove(textOutClass);
+      description.classList.remove(textOutClass);
   
-      imageContainer.classList.add(inClass);
-      heading.classList.add(inClass);
-      description.classList.add(inClass);
+      imageContainer.classList.add(imgInClass);
+      heading.classList.add(textInClass);
+      description.classList.add(textInClass);
     }, 500); // Durasi sesuai dengan CSS transition
   }
   

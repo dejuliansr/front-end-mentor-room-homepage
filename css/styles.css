@@ -82,6 +82,7 @@ header {
   width: 50%;
   height: 550px;
   flex: 2;
+  overflow: hidden;
 }
 
 .image-container img {
@@ -117,6 +118,7 @@ header {
   flex: 1;
   margin: auto;
   padding: 50px;
+  overflow: hidden;
 }
 
 .text-container h2 {
@@ -141,51 +143,105 @@ header {
   color: hsl(0, 0%, 63%);
 }
 
-/* Style dasar */
-.image-container,
-.text-container {
-  position: relative;
-  overflow: hidden;
+/* Animasi masuk dari blur ke tidak blur */
+@keyframes blurIn {
+  from {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 
-.image-container picture img,
-.text-container h2,
-.text-container p {
-  width: 100%;
-  opacity: 0;
-  transform: translateX(50px); /* Default start position (from right) */
-  transition: transform 0.5s ease, opacity 0.5s ease;
+/* Animasi keluar dari tidak blur ke blur */
+@keyframes blurOut {
+  from {
+    filter: blur(0);
+    opacity: 1;
+  }
+  to {
+    filter: blur(10px);
+    opacity: 0;
+  }
 }
 
-/* Animasi keluar ke kiri dan masuk dari kanan */
-.image-container picture img.slide-left-out,
-.text-container h2.slide-left-out,
-.text-container p.slide-left-out {
-  opacity: 0;
-  transform: translateX(-50px); /* Slide keluar ke kiri */
+/* Terapkan ke elemen */
+.blur-in {
+  animation: blurIn 0.5s ease-in-out forwards;
 }
 
-.image-container picture img.slide-right-in,
-.text-container h2.slide-right-in,
-.text-container p.slide-right-in {
-  opacity: 1;
-  transform: translateX(0); /* Slide masuk dari kanan */
+.blur-out {
+  animation: blurOut 0.5s ease-in-out forwards;
 }
 
-/* Animasi keluar ke kanan dan masuk dari kiri */
-.image-container picture img.slide-right-out,
-.text-container h2.slide-right-out,
-.text-container p.slide-right-out {
-  opacity: 0;
-  transform: translateX(50px); /* Slide keluar ke kanan */
+
+/* Animasi masuk dari kanan */
+@keyframes slideRightIn {
+  from {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.image-container picture img.slide-left-in,
-.text-container h2.slide-left-in,
-.text-container p.slide-left-in {
-  opacity: 1;
-  transform: translateX(0); /* Slide masuk dari kiri */
+/* Animasi keluar ke kiri */
+@keyframes slideLeftOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
 }
+
+/* Animasi masuk dari kiri */
+@keyframes slideLeftIn {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animasi keluar ke kanan */
+@keyframes slideRightOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+}
+
+/* Terapkan ke elemen */
+.slide-right-in {
+  animation: slideRightIn 0.5s ease-in-out forwards;
+}
+
+.slide-left-out {
+  animation: slideLeftOut 0.5s ease-in-out forwards;
+}
+
+.slide-left-in {
+  animation: slideLeftIn 0.5s ease-in-out forwards;
+}
+
+.slide-right-out {
+  animation: slideRightOut 0.5s ease-in-out forwards;
+}
+
 
 .about {
   display: flex;
